@@ -30,6 +30,9 @@ jobs:
           wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O cmdline.zip
           unzip -q -o cmdline.zip -d $HOME/.buildozer/android/platform/android-sdk/cmdline-tools
           mv $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/cmdline-tools $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest
+          mkdir -p $HOME/.buildozer/android/platform/android-sdk/tools/bin
+          cp $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager $HOME/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager
+          cp -r $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/lib $HOME/.buildozer/android/platform/android-sdk/tools/lib
           mkdir -p $HOME/.buildozer/android/platform/android-sdk/licenses
           echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
           echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
