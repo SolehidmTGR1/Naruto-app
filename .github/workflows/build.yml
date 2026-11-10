@@ -20,6 +20,19 @@ jobs:
           pip install buildozer cython==0.29.33
       - name: Build APK
         run: |
+          mkdir -p $HOME/.android
+          mkdir -p $HOME/.buildozer/android/platform/android-sdk/licenses
+          echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          echo "24333f8a63b6825a656882fa2f2492895e76d83" >> $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          export ANDROIDSDK=$HOME/.buildozer/android/platform/android-sdk
+          export ANDROIDNDK=$HOME/.buildozer/android/platform/android-ndk-r25b
+          export ANDROIDAPI=33
+          export ANDROIDMINAPI=24
+          yes | buildozer -v android debug || true
+          ls $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/ || true
+          yes | $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          yes | $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;33.0.2" "platform-tools" "platforms;android-33" || true
           buildozer -v android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
