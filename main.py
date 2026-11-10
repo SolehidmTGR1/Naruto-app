@@ -49,7 +49,7 @@ class NarutoApp(App):
             ("Sakura Haruno", "Ninja medis terkuat!"),
             ("Kakashi Hatake", "Guru Tim 7, si Ninja Peniru!"),
             ("Hinata Hyuga", "Pengguna Byakugan!"),
-            ("Itachi Uchiha", "Kakak Sasuke, anggota Akatsuki!"),
+            ("Itachi Uchiha", "Kakak Sasuke!"),
             ("Jiraiya", "Sannin Legendaris, guru Naruto!"),
             ("Madara Uchiha", "Legenda Uchiha!"),
         ]
@@ -69,7 +69,6 @@ class NarutoApp(App):
 
         scroll.add_widget(daftar)
         utama.add_widget(scroll)
-
         return utama
 
     def pilih(self, nama, deskripsi):
